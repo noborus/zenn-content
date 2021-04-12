@@ -3,7 +3,7 @@ title: "terminal pager ovのフォローモード（tail -f相当）"
 emoji: "🐵"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["go", "less", "tail"]
-published: false
+published: true
 ---
 
 [ターミナルページャー ovの紹介](https://zenn.dev/noborus/articles/2b1087a1274cf41c4c0a) でも書いていた[ov](https://github.com/noborus/ov/) にフォローモードを追加しました。
