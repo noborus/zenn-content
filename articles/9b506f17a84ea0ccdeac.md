@@ -8,9 +8,10 @@ published: false
 ログ監視など追記されるファイルを見るためによく`tail -f`が使用されますが、
 [Stop using tail -f (mostly)](https://www.brianstorti.com/stop-using-tail/) でも紹介されているようにPagerのlessでも`less +F`により`tail -f`の代わりに使用できることができます。
 
+今回Terminal Pagerの[ov](https://github.com/noborus/ov)でも同様のフォローモードを追加しました。
+
 ## follow-mode
 
-この度 Terminal Pagerの[ov](https://github.com/noborus/ov)でも同様のフォローモードを追加しました。
 `ov --follow-mode ファイル名` (または`-f` ) でファイルを監視し追加があれば更新します。
 
 このフォローモードは起動後でも`ctrl+f`によりON/OFFを切り替えることができます。lessと違うところは、フォローモードのままでも多くの操作ができることです。例えば、ログが流れていながら検索してハイライト表示することができます。
