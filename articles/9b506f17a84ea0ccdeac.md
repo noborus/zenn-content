@@ -5,6 +5,9 @@ type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["go", "less", "tail"]
 published: false
 ---
+
+[ターミナルページャー ovの紹介](https://zenn.dev/noborus/articles/2b1087a1274cf41c4c0a) でも書いていた[ov](https://github.com/noborus/ov/) にフォローモードを追加しました。
+
 ログ監視など追記されるファイルを見るためによく`tail -f`が使用されますが、
 [Stop using tail -f (mostly)](https://www.brianstorti.com/stop-using-tail/) でも紹介されているようにPagerのlessでも`less +F`により`tail -f`の代わりに使用できることができます。
 
@@ -24,10 +27,10 @@ ov --follow-mode random.log
 
 ## follow-all
 
-フォローモードで複数ファイルを指定することもできます。ただ、`less`と同じ様に複数ファイルを指定した場合は表示しているファイル以外は裏で更新されているので、（ovでは `]`や`[` により）ファイルを切り替える必要があります。
+フォローモードで複数ファイルを指定することもできます。ただ、`less`と同じ様に複数ファイルを指定した場合は表示しているファイル以外は裏で更新されているので、（ovでは `]`や`[` により）表示するファイルを切り替える必要があります。
 
 そこでovでは、フォローオールモード(`--follow-all`または`-A`)を追加しました。
-フォローオールモードでは更新されたファイルに自動で画面が切り替わります。
+フォローオールモードでは更新されて行が追加されたファイルに自動で画面が切り替わります。
 
 ```sh
 ov --follow-all access.log error.log
