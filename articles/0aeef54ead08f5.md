@@ -121,7 +121,7 @@ drwxr-xr-x |    -| noborus| 19 Mar 12:58 |docs
 例えば、`ps`でオプションを使用した場合は、より多くの情報を表示できますが、はみ出す項目が多くあります。
 
 ```sh
-$ ps auxsh
+$ ps aux
 USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
 root           1  0.0  0.0 169004 11464 ?        Ss   Mar27   1:04 /sbin/init sp
 root           2  0.0  0.0      0     0 ?        S    Mar27   0:00 [kthreadd]
@@ -135,7 +135,7 @@ noborus   619043  0.0  0.0  38992 28968 pts/4    Ss+  Apr04   0:02 zsh
 noborus  1061523  2.2  1.8 34556112 591016 ?     SLl  Apr06  61:54 /opt/google/chrome/chrome
 ```
 
-とVSZとRSSがchromeプロセスのようにメモリを多く使用するプロセスがはみ出しています。
+と`VSZ`と`RSS`がchromeプロセスのようにメモリを多く使用するプロセスがはみ出しています。
 そのため、区切り位置がスペースでなかったら、多くは右にずらしてスペースを探して区切り位置を補正します（実際には区切り位置の推測が間違って右にずれている可能性を考慮して左にずらして収まるかも試します）。
 
 ### その他考慮
