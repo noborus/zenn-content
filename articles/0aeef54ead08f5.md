@@ -2,7 +2,7 @@
 title: "幅指定フォーマットの幅を推測する"
 emoji: "💭"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["cli", "fwf","printf"]
+topics: ["cli", "fwf","printf", "go"]
 published: true
 ---
 昔からUnix系のコマンドやCLIでは幅を揃えて出力することがあります。
@@ -15,7 +15,7 @@ published: true
 
 ## [guesswidth](https://github.com/noborus/guesswidth)
 
-Go製です。
+[Go](https://go.dev/)で作ってます。
 
 完璧に読み取るのは難しいですが、スペース区切りの正規表現よりは、より良い結果が得られると思います。
 
@@ -147,6 +147,29 @@ Filesystem     1K-blocks      Used Available Use% Mounted on
 ```
 
 そのためヘッダー行の位置だけスペースがあって、その下の値にはスペースがない場合は数値の配列にした場合にカウントアップされずに1のままになるため、区切り位置はしきい値を2以上にすることで防止しています。
+
+また、幅位置は、2幅取る文字（いわゆる日本語等の全角文字）を考慮しています。
+Byte数 != 文字数 != rune数 != 幅位置です。
+アルファベットと数字のみであれば全部同じですが、日本語や絵文字などが含まれることを考慮すると一気にややこしくなります。
+
+guesswidthは`dpkg -l`が日本語表記でも読み取れるようになっています。
+
+```console
+dpkg -l|guesswidth --header 4 csv
+```
+
+```csv
+要望=(U)不明/(I)インストール/(R)削除/(P)完全削除/(H)保持,,,,
+| 状態=(N)無/(I)インストール済/(C)設定/(U)展開/(F)設定失敗/(H)半インストール/(W)トリガ待ち/(T)トリガ保留,,,,
+|/ エラー?=(空欄)無/(R)要再インストール,"(状態,エラーの大文字=異常)",,,
+||/,名前,バージョン,アーキテクチ,説明
++++-==========================================-==========================================-============-================================================================================,,,,================================================================================
+ii,accountsservice,22.07.5-2ubuntu1.3,amd64,query and manipulate user account information
+ii,acl,2.3.1-1,amd64,access control list - utilities
+ii,acpi-support,0.144,amd64,scripts for handling many ACPI events
+ii,acpid,1:2.0.33-1ubuntu1,amd64,Advanced Configuration and Power Interface event daemon
+ii,adduser,3.118ubuntu5,all,add and remove users and groups
+```
 
 ### ライブラリ使用
 
