@@ -2,7 +2,7 @@
 title: "terminal pager ovのフォローモード（tail -f相当）"
 emoji: "🐵"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["go", "less", "tail"]
+topics: ["ov", "go", "less", "tail"]
 published: true
 ---
 
